@@ -4,14 +4,14 @@ import { Container } from "@mui/system";
 import { Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CurrencyState } from "../CurrencyContext";
 
 const Header = () => {
   // This hook is to return to the homepage whenever the crypto Tracker logo is cliked (Refer to onClick at Typography component)
   const navigate = useNavigate();
 
-  // import currency state from useContext
-  // const { currency, setCurrency } = CryptoState;
-  // console.log(CryptoState);
+  // Import currency state from CurrencyContext
+  const { currency, setCurrency } = CurrencyState();
 
   // Defined custom dark theme for the NavBar
   const darkMode = createTheme({
@@ -46,7 +46,7 @@ const Header = () => {
               variant="outlined"
               style={{ width: 100, height: 40, marginRight: 15 }}
               defaultValue="SGD"
-              // onChange={(e) => setCurrency(e.target.value)}
+              onChange={(e) => setCurrency(e.target.value)}
             >
               <MenuItem value={"SGD"}>SGD</MenuItem>
               <MenuItem value={"USD"}>USD</MenuItem>

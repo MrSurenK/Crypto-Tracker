@@ -1,12 +1,22 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
-// Define currency context
-const currency = createContext({});
+// Store the context
+const CurrencyCountry = createContext();
 
-// Allow just this function to be imported as a module from this file
 const CurrencyContext = ({ children }) => {
-  return <CurrencyContext.Provider>{children}</CurrencyContext.Provider>;
+  const [currency, setCurrency] = useState("SGD");
+  // Currency.Provider refers to the createContext().provider object in React
+  return (
+    //states stored in the value prop of provider to be accessed in other components
+    <CurrencyCountry.Provider value={{ currency, setCurrency }}>
+      {children}
+    </CurrencyCountry.Provider>
+  );
 };
 
-// Exports this file
 export default CurrencyContext;
+
+// To export the states out to the relevant components
+export const CurrencyState = () => {
+  return useContext(CurrencyCountry);
+};
