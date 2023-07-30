@@ -39,7 +39,7 @@ const Header = () => {
               variant={"h6"}
               onClick={() => navigate("/")}
             >
-              Crypto Tracker
+              CRYPTO TRACKER
             </Typography>
 
             <Select
