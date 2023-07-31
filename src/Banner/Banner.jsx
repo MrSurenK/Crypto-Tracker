@@ -20,7 +20,7 @@ const Banner = () => {
             justifyContent: "space-around",
           }}
         >
-          <div>
+          <Box style={{ marginTop: -150 }}>
             <Typography
               variant="h2"
               sx={{
@@ -40,7 +40,7 @@ const Banner = () => {
             >
               One small step for Man. One giant leap for mankind.
             </Typography>
-          </div>
+          </Box>
         </Container>
       </Box>
     </>
