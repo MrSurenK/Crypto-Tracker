@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CoinList } from "../config/endpoints";
 import { CurrencyState } from "../CurrencyContext";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
 import { Container } from "@mui/system";
 import { CircularProgress, TextField, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
@@ -9,7 +10,8 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Box } from "@mui/material";
+
+import TableBody from "@mui/material/TableBody";
 
 const Coinstable = () => {
   const [coins, setCoins] = useState([]);
@@ -44,11 +46,21 @@ const Coinstable = () => {
     },
   });
 
+  //Handle search function for search bar
+  //Search Logic: Searching for exact match with the coin name or the coin ticker
+  const handleSearch = () => {
+    return coins.filter(
+      (coin) =>
+        coin.name.toLowerCase().includes(search) ||
+        coin.symbol.toLowerCase().includes(search)
+    );
+  };
+
   return (
     <ThemeProvider theme={darkMode}>
       <Container sx={{ textAlign: "center" }}>
         <Typography variant="h4" sx={{ margin: 18, fontFamily: "Roboto" }}>
-          Crpto Coins by Market Cap
+          Crypto Coins by Market Cap
         </Typography>
         <TextField
           label="Search"
@@ -80,6 +92,7 @@ const Coinstable = () => {
                   ))}
                 </TableRow>
               </TableHead>
+              <TableBody></TableBody>
             </Table>
           )}
         </TableContainer>
