@@ -20,7 +20,7 @@ const Banner = () => {
             justifyContent: "space-around",
           }}
         >
-          <Box style={{ marginTop: -150 }}>
+          <div>
             <Typography
               variant="h2"
               sx={{
@@ -31,7 +31,7 @@ const Banner = () => {
               CRYPTO TRACKER
             </Typography>
             <Typography
-              variant="subtitle1"
+              variant="subtitle2"
               sx={{
                 color: "darkgrey",
                 textTransform: "capitalize",
@@ -40,7 +40,7 @@ const Banner = () => {
             >
               One small step for Man. One giant leap for mankind.
             </Typography>
-          </Box>
+          </div>
         </Container>
       </Box>
     </>
