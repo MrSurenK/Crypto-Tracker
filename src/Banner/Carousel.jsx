@@ -58,6 +58,7 @@ const Carousel = () => {
         autoPlayInterval={1000}
         animationDuration={1500}
         disableDotsControls
+        disableButtonsControls
         responsive={responsive}
         items={items}
       ></AliceCarousel>
