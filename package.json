@@ -17,6 +17,7 @@
     "@mui/material": "^5.14.2",
     "@mui/system": "^5.14.1",
     "react": "^18.2.0",
+    "react-alice-carousel": "^2.7.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2"
   },

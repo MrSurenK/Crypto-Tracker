@@ -1,12 +1,13 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
+import Carousel from "./Carousel";
 
 const Banner = () => {
   return (
     <>
       <Box
         sx={{
-          backgroundImage: "URL(./public/stars.jpg)",
+          backgroundImage: "URL(./stars.jpg)",
           backgroundRepeat: "none",
           backgroundSize: "cover",
         }}
@@ -20,7 +21,15 @@ const Banner = () => {
             justifyContent: "space-around",
           }}
         >
-          <div>
+          <div
+            style={{
+              display: "flex",
+              height: "40%",
+              flexDirection: "column",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
             <Typography
               variant="h2"
               sx={{
@@ -40,6 +49,7 @@ const Banner = () => {
             >
               One small step for Man. One giant leap for mankind.
             </Typography>
+            <Carousel></Carousel>
           </div>
         </Container>
       </Box>
