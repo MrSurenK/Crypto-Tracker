@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { CoinList } from "../config/endpoints";
 import { CurrencyState } from "../CurrencyContext";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -10,6 +11,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { numberWithCommas } from "../Banner/Carousel";
 
 import TableBody from "@mui/material/TableBody";
 
@@ -85,14 +87,64 @@ const Coinstable = () => {
                         fontFamily: "Roboto",
                       }}
                       key={head}
-                      align={head === "Coin" ? " " : "right"}
+                      align={head === "Coin" ? "left" : "right"}
                     >
                       {head}
                     </TableCell>
                   ))}
                 </TableRow>
               </TableHead>
-              <TableBody></TableBody>
+              <TableBody>
+                {handleSearch().map((row) => {
+                  const profit = row.price_change_percentage_24h >= 0;
+
+                  return (
+                    <TableRow
+                      onClick={() => useNavigate(`/coins/${row.id}`)}
+                      sx={{}}
+                      key={row.name}
+                    >
+                      {/* Table data column for the coin logo and name */}
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        sx={{ display: "flex", gap: 15 }}
+                      >
+                        <img
+                          src={row.image}
+                          alt={row.name}
+                          height="50"
+                          style={{ marginBottom: 10 }}
+                        />
+                        <div
+                          style={{ display: "flex", flexDirection: "column" }}
+                        >
+                          <span
+                            style={{ textTransform: "uppercase", fontSize: 22 }}
+                          >
+                            {row.symbol}
+                          </span>
+                          <span style={{ color: "darkgrey" }}>{row.name}</span>
+                        </div>
+                      </TableCell>
+                      {/* Table data column for the price */}
+                      <TableCell align="right">
+                        ${numberWithCommas(row.current_price.toFixed(2))}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        style={{
+                          color: profit > 0 ? "rgb(14,203,129}" : "red",
+                          fontWeight: "red",
+                        }}
+                      >
+                        {profit && "+"}
+                        {row.price_change_percentage_24h.toFixed(2)}%
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
             </Table>
           )}
         </TableContainer>

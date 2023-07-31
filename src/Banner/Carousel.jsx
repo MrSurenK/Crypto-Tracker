@@ -7,7 +7,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { Link } from "react-router-dom";
 
 // regex string to add commas between dollar value: https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
-function numberWithCommas(x) {
+export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -34,7 +34,7 @@ const Carousel = () => {
   // Map the coins into the AliceCarousel Compononent library
   const items = trending.map((coin) => {
     // Calculating profit = true
-    let profit = coin.price_change_percentage_24h >= 0;
+    const profit = coin.price_change_percentage_24h >= 0;
     return (
       <Link
         style={{
