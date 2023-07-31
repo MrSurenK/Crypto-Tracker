@@ -5,6 +5,11 @@ import { TrendingCoins } from "../config/endpoints";
 import AliceCarousel from "react-alice-carousel";
 import { Link } from "react-router-dom";
 
+// regex string to add commas between dollar value: https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const Carousel = () => {
   // Create new states to store the data of the top coins
   const [trending, setTrending] = useState([]);
@@ -27,18 +32,42 @@ const Carousel = () => {
 
   // Map the coins into the AliceCarousel Compononent library
   const items = trending.map((coin) => {
+    // Calculating profit = true
+    let profit = coin.price_change_percentage_24h >= 0;
     return (
-      <Link to={`/coins/${coin.id}`}>
+      <Link
+        style={{
+          dislpay: "flex",
+          flexDirection: "column",
+          alignItems: "cemter",
+          cursor: "pointer",
+          textTransform: "uppercase",
+          color: "white",
+        }}
+        to={`/coins/${coin.id}`}
+      >
         <img
-          src={coin.image}
+          src={coin?.image}
           alt={coin.name}
           height="80"
           style={{ marginBottom: 10 }}
         ></img>
         <span>
-          {coin.symbol}
+          {coin?.symbol}
           &nbsp;
-          <span></span>
+          <span
+            style={{
+              color: profit > 0 ? "rgb(14,203,129)" : "red",
+              fontWeight: 500,
+            }}
+          >
+            {/* if profit disaply + */}
+            {/* Disaply 2dp with a % at the back */}
+            {profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%
+          </span>
+        </span>
+        <span style={{ fontSize: 22, fontWeight: 500 }}>
+          ${numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
     );
@@ -55,19 +84,19 @@ const Carousel = () => {
   };
 
   return (
-    <Box sx={{ height: "50%", display: "flex", alignItems: "center" }}>
+    <div style={{ height: "50%", display: "flex", alignItems: "center" }}>
       <AliceCarousel
         mouseTracking
         infinite
-        autoPlay
         autoPlayInterval={1000}
         animationDuration={1500}
         disableDotsControls
         disableButtonsControls
         responsive={responsive}
+        autoPlay
         items={items}
-      ></AliceCarousel>
-    </Box>
+      />
+    </div>
   );
 };
 
