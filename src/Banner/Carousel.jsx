@@ -35,6 +35,11 @@ const Carousel = () => {
           height="80"
           style={{ marginBottom: 10 }}
         ></img>
+        <span>
+          {coin.symbol}
+          &nbsp;
+          <span></span>
+        </span>
       </Link>
     );
   });
