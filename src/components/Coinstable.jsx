@@ -138,7 +138,7 @@ const Coinstable = () => {
                       <TableCell
                         align="right"
                         style={{
-                          color: profit > 0 ? "rgb(14,203,129}" : "red",
+                          color: profit > 0 ? "rgb(14,203,129)" : "red",
                           fontWeight: 500,
                         }}
                       >
