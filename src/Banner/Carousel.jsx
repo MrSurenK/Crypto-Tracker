@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { CurrencyState } from "../CurrencyContext";
 import { TrendingCoins } from "../config/endpoints";
 import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 import { Link } from "react-router-dom";
 
 // regex string to add commas between dollar value: https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
@@ -61,7 +62,7 @@ const Carousel = () => {
               fontWeight: 500,
             }}
           >
-            {/* if profit disaply + */}
+            {/* if profit disaply +, - alr displayed in dataset so just need to add + to positive price changes */}
             {/* Disaply 2dp with a % at the back */}
             {profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
@@ -78,16 +79,24 @@ const Carousel = () => {
     0: {
       items: 2,
     },
-    512: {
+    1024: {
       items: 4,
     },
   };
 
   return (
-    <div style={{ height: "50%", display: "flex", alignItems: "center" }}>
+    <Box
+      sx={{
+        width: "80%",
+        margin: "0 auto",
+        height: "50%",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <AliceCarousel
         mouseTracking
-        infinite
+        // infinite
         autoPlayInterval={1000}
         animationDuration={1500}
         disableDotsControls
@@ -96,7 +105,7 @@ const Carousel = () => {
         autoPlay
         items={items}
       />
-    </div>
+    </Box>
   );
 };
 

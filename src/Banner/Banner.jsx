@@ -21,8 +21,8 @@ const Banner = () => {
             justifyContent: "space-around",
           }}
         >
-          <div
-            style={{
+          <Box
+            sx={{
               display: "flex",
               height: "40%",
               flexDirection: "column",
@@ -35,6 +35,7 @@ const Banner = () => {
               sx={{
                 fontWeight: "bold",
                 fontFamily: "Roboto",
+                mb: 15,
               }}
             >
               CRYPTO TRACKER
@@ -50,7 +51,7 @@ const Banner = () => {
               One small step for Man. One giant leap for mankind.
             </Typography>
             <Carousel></Carousel>
-          </div>
+          </Box>
         </Container>
       </Box>
     </>
