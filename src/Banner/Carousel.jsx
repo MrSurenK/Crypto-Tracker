@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import { CurrencyState } from "../CurrencyContext";
 import { TrendingCoins } from "../config/endpoints";
+import AliceCarousel from "react-alice-carousel";
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
   // Create new states to store the data of the top coins
@@ -23,9 +25,42 @@ const Carousel = () => {
     topCoins();
   }, [currency]);
 
+  // Map the coins into the AliceCarousel Compononent library
+  const items = trending.map((coin) => {
+    return (
+      <Link to={`/coins/${coin.id}`}>
+        <img
+          src={coin.image}
+          alt={coin.name}
+          height="80"
+          style={{ marginBottom: 10 }}
+        ></img>
+      </Link>
+    );
+  });
+
+  //Responsive object prop for Alice Carousell
+  const responsive = {
+    0: {
+      items: 2,
+    },
+    512: {
+      items: 4,
+    },
+  };
+
   return (
     <Box sx={{ height: "50%", display: "flex", alignItems: "center" }}>
-      Carousell
+      <AliceCarousel
+        mouseTracking
+        infinite
+        autoPlay
+        autoPlayInterval={1000}
+        animationDuration={1500}
+        disableDotsControls
+        responsive={responsive}
+        items={items}
+      ></AliceCarousel>
     </Box>
   );
 };
