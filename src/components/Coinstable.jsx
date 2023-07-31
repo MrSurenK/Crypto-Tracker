@@ -65,7 +65,7 @@ const Coinstable = () => {
           Crypto Coins by Market Cap
         </Typography>
         <TextField
-          label="Search"
+          label="Search Crypto Coins..."
           variant="outlined"
           sx={{ mb: 20, width: "100%" }}
           onChange={(e) => setSearch(e.target.value)}
@@ -101,7 +101,11 @@ const Coinstable = () => {
                   return (
                     <TableRow
                       onClick={() => useNavigate(`/coins/${row.id}`)}
-                      sx={{}}
+                      sx={{
+                        cursor: "pointer",
+                        "&:hover": { bgcolor: "#131111" },
+                        fontFamily: "Roboto",
+                      }}
                       key={row.name}
                     >
                       {/* Table data column for the coin logo and name */}
@@ -135,11 +139,14 @@ const Coinstable = () => {
                         align="right"
                         style={{
                           color: profit > 0 ? "rgb(14,203,129}" : "red",
-                          fontWeight: "red",
+                          fontWeight: 500,
                         }}
                       >
                         {profit && "+"}
                         {row.price_change_percentage_24h.toFixed(2)}%
+                      </TableCell>
+                      <TableCell align="right">
+                        ${numberWithCommas(row.market_cap.toString())}
                       </TableCell>
                     </TableRow>
                   );
