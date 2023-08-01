@@ -109,7 +109,7 @@ const Coinstable = () => {
                         onClick={() => useNavigate(`/coins/${row.id}`)}
                         sx={{
                           cursor: "pointer",
-                          "&:hover": { bgcolor: "#131111" },
+                          "&:hover": { bgcolor: "#131111" }, //Check on this syntax
                           fontFamily: "Roboto",
                         }}
                         key={row.name}
