@@ -4,6 +4,7 @@ import { CurrencyState } from "../CurrencyContext";
 import { SingleCoin } from "../config/endpoints";
 import { styled } from "@mui/system";
 import CoinInfo from "../components/CoinInfo";
+import { Typography } from "@mui/material";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -85,11 +86,17 @@ const CoinPage = () => {
       <StyledContainer>
         <StyledSidebar>
           <img
-            src={coin?.image.large}
+            src={coin?.image}
             alt={coin?.name}
             height="200"
             style={{ marginBottom: 20 }}
           />
+          <StyledHeading>
+            <Typography variant="h3">{coin?.name}</Typography>
+          </StyledHeading>
+          <StyledDescription>
+            <Typography></Typography>
+          </StyledDescription>
         </StyledSidebar>
       </StyledContainer>
 
