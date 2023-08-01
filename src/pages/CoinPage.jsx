@@ -5,6 +5,7 @@ import { SingleCoin } from "../config/endpoints";
 import { styled } from "@mui/system";
 import CoinInfo from "../components/CoinInfo";
 import { Typography } from "@mui/material";
+import parse from "html-react-parser";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -13,7 +14,8 @@ const CoinPage = () => {
   const { currency } = CurrencyState();
 
   const fetchCoin = async () => {
-    const { data } = await fetch(SingleCoin(id));
+    const response = await fetch(SingleCoin(id));
+    const data = await response.json();
 
     setCoin(data);
   };
@@ -22,6 +24,7 @@ const CoinPage = () => {
 
   useEffect(() => {
     fetchCoin();
+    console.log(coin);
   }, []);
 
   // Styling of components
@@ -81,12 +84,15 @@ const CoinPage = () => {
     },
   });
 
+  const des = coin?.description.en.split(". ")[0];
+  const strDes = des.toString();
+
   return (
     <>
       <StyledContainer>
         <StyledSidebar>
           <img
-            src={coin?.image}
+            src={coin?.image.large}
             alt={coin?.name}
             height="200"
             style={{ marginBottom: 20 }}
@@ -95,7 +101,7 @@ const CoinPage = () => {
             <Typography variant="h3">{coin?.name}</Typography>
           </StyledHeading>
           <StyledDescription>
-            <Typography></Typography>
+            <Typography variant="subtitle1">{parse(strDes)}</Typography>
           </StyledDescription>
         </StyledSidebar>
       </StyledContainer>
