@@ -12,7 +12,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { numberWithCommas } from "../Banner/Carousel";
-
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import TableBody from "@mui/material/TableBody";
 
 const Coinstable = () => {
@@ -97,7 +98,9 @@ const Coinstable = () => {
               </TableHead>
               <TableBody>
                 {handleSearch()
+                  // slice(0,10) if page === 1 ---> so each page will only show 10 coins (This is dynamic as the slice method will slice the appropriate index item based of the page state)
                   .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                  // If no search is done, all coins will be mapped as filter function in handleSearch will return a new array with all the coins as all of the coins have string value === true
                   .map((row) => {
                     const profit = row.price_change_percentage_24h >= 0;
 
@@ -163,9 +166,23 @@ const Coinstable = () => {
             </Table>
           )}
         </TableContainer>
+        <Stack spacing={2}>
+          <Pagination
+            count={(handleSearch().length / 10).toFixed(0)}
+            style={{
+              padding: 20,
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            onChange={(_, value) => {
+              setPage(value);
+              window.scroll(0, 450);
+            }}
+          />
+        </Stack>
       </Container>
     </ThemeProvider>
   );
 };
-
 export default Coinstable;
