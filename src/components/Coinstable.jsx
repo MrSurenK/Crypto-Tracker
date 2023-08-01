@@ -25,6 +25,8 @@ const Coinstable = () => {
   // Import from context API
   const { currency } = CurrencyState();
 
+  const navigate = useNavigate();
+
   const fetchCoins = async () => {
     setLoading(true);
 
@@ -106,7 +108,7 @@ const Coinstable = () => {
 
                     return (
                       <TableRow
-                        onClick={() => useNavigate(`/coins/${row.id}`)}
+                        onClick={() => navigate(`/coins/${row.id}`)}
                         sx={{
                           cursor: "pointer",
                           "&:hover": { bgcolor: "#131111" }, //Check on this syntax
