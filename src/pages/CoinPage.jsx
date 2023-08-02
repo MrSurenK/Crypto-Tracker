@@ -23,7 +23,6 @@ const CoinPage = () => {
 
   useEffect(() => {
     fetchCoin();
-    console.log(coin);
   }, []);
 
   // Styling of components
