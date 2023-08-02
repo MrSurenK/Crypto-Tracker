@@ -11,8 +11,8 @@ import {
   LineElement,
   Tooltip,
 } from "chart.js";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { styled } from "@mui/system";
+import { styled, createTheme, ThemeProvider } from "@mui/system";
+import { chartDays } from "../config/data";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -116,15 +116,27 @@ const CoinInfo = ({ coin }) => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <StyleChartContainer>
-        {!historicalPrice ? (
-          <CircularProgress sx={{ color: "gold" }} size={250} thickness={1} />
-        ) : (
-          <>
+      <>
+        <StyleChartContainer>
+          {!historicalPrice ? (
+            <CircularProgress sx={{ color: "gold" }} size={250} thickness={1} />
+          ) : (
             <Line data={data} options={options} />
-          </>
-        )}
-      </StyleChartContainer>
+          )}
+        </StyleChartContainer>
+        <div
+          style={{
+            display: "flex",
+            marginTop: 20,
+            justifyContent: "space-around",
+            width: "100%",
+          }}
+        >
+          {chartDays.map((day) => (
+            <button>{day.label}</button>
+          ))}
+        </div>
+      </>
     </ThemeProvider>
   );
 };
