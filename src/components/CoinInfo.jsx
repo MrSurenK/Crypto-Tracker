@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { CurrencyState } from "../CurrencyContext";
 import { HistoricalChart } from "../config/endpoints";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { styled } from "@mui/system";
 import { CircularProgress } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import {
@@ -13,6 +11,8 @@ import {
   LineElement,
   Tooltip,
 } from "chart.js";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { styled } from "@mui/system";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -38,6 +38,7 @@ const CoinInfo = ({ coin }) => {
     fetchHistoricalPrices();
   }, [currency, days]);
 
+  // Chart Div Styling
   const darkTheme = createTheme({
     palette: {
       primary: {
@@ -47,7 +48,7 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
-  const StyleContainer = styled("div")(({ theme }) => ({
+  const StyleChartContainer = styled("div")(({ theme }) => ({
     width: "75%",
     display: "flex",
     flexDirection: "column",
@@ -115,7 +116,7 @@ const CoinInfo = ({ coin }) => {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <StyleContainer>
+      <StyleChartContainer>
         {!historicalPrice ? (
           <CircularProgress sx={{ color: "gold" }} size={250} thickness={1} />
         ) : (
@@ -123,7 +124,7 @@ const CoinInfo = ({ coin }) => {
             <Line data={data} options={options} />
           </>
         )}
-      </StyleContainer>
+      </StyleChartContainer>
     </ThemeProvider>
   );
 };

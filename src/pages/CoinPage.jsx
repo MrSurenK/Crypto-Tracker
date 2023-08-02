@@ -8,6 +8,7 @@ import { Typography } from "@mui/material";
 import { numberWithCommas } from "../Banner/Carousel";
 import LinearProgress from "@mui/material/LinearProgress";
 import parse from "html-react-parser";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -85,6 +86,33 @@ const CoinPage = () => {
     },
   });
 
+  // Chart styling
+
+  const darkTheme = createTheme({
+    palette: {
+      primary: {
+        main: "#fff",
+      },
+      type: "dark",
+    },
+  });
+
+  const StyleChartContainer = styled("div")(({ theme }) => ({
+    width: "75%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 25,
+    padding: 40,
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      marginTop: 0,
+      padding: 20,
+      paddingTop: 0,
+    },
+  }));
+
   // Coin price might take some time to fetch, so if no coin it needs to load
   if (!coin) return <LinearProgress sx={{ bgcolor: "Gold" }}></LinearProgress>;
   return (
@@ -153,6 +181,7 @@ const CoinPage = () => {
         </StyledSidebar>
       </StyledContainer>
       {/* coin is being propped over to the coininfo component */}
+
       <CoinInfo coin={coin} />
     </>
   );
