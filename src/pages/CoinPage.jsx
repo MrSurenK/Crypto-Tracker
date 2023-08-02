@@ -130,7 +130,7 @@ const CoinPage = () => {
                   {numberWithCommas(
                     coin?.market_data.current_price[
                       currency.toLowerCase()
-                    ].toFixed(2)
+                    ].toFixed(5)
                   )}
                 </Typography>
               </span>
