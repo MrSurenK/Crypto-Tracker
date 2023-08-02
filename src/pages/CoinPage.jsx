@@ -108,17 +108,17 @@ const CoinPage = () => {
             </div>
           </StyledDescription>
           <StyledMarketData>
-            <span style={{ display: "flex" }}>
-              <StyledHeading>
+            <StyledHeading>
+              <span style={{ display: "flex" }}>
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
                   Rank:
                 </Typography>
-                {"\u00A0"} {"\u00A0"}
+                &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
                   {coin?.market_cap_rank}
                 </Typography>
-              </StyledHeading>
-            </span>
+              </span>
+            </StyledHeading>
           </StyledMarketData>
         </StyledSidebar>
       </StyledContainer>
