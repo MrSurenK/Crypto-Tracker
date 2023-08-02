@@ -152,7 +152,7 @@ const CoinPage = () => {
           </StyledMarketData>
         </StyledSidebar>
       </StyledContainer>
-
+      {/* coin is being propped over to the coininfo component */}
       <CoinInfo coin={coin} />
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CurrencyState } from "../CurrencyContext";
 import { HistoricalChart } from "../config/endpoints";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -26,7 +27,16 @@ const CoinInfo = ({ coin }) => {
     fetchHistoricalPrices();
   }, [currency, days]);
 
-  return <div>Coin Chart</div>;
+  const darkTheme = createTheme({
+    palette: {
+      primary: {
+        main: "#fff",
+      },
+      type: "dark",
+    },
+  });
+
+  return <ThemeProvider theme={darkTheme}></ThemeProvider>;
 };
 
 export default CoinInfo;
