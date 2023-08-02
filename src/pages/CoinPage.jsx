@@ -5,6 +5,9 @@ import { SingleCoin } from "../config/endpoints";
 import { styled } from "@mui/system";
 import CoinInfo from "../components/CoinInfo";
 import { Typography } from "@mui/material";
+import { numberWithCommas } from "../Banner/Carousel";
+import LinearProgress from "@mui/material/LinearProgress";
+import Box from "@mui/material/Box";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -82,9 +85,8 @@ const CoinPage = () => {
     },
   });
 
-  // const des = coin?.description.en.split(". ")[0];
-  // const strDes = des.toString();
-
+  // Coin price might take some time to fetch, so if no coin it needs to load
+  if (!coin) return <LinearProgress sx={{ bgcolor: "Gold" }}></LinearProgress>;
   return (
     <>
       <StyledContainer>
@@ -116,6 +118,32 @@ const CoinPage = () => {
                 &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
                   {coin?.market_cap_rank}
+                </Typography>
+              </span>
+              <span style={{ display: "flex" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
+                  Current Price:
+                </Typography>
+                &nbsp; &nbsp;
+                <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
+                  ${" "}
+                  {numberWithCommas(
+                    coin?.market_data.current_price[currency.toLowerCase()]
+                  )}
+                </Typography>
+              </span>
+              <span style={{ display: "flex" }}>
+                <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
+                  Market Cap:
+                </Typography>
+                &nbsp; &nbsp;
+                <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
+                  $
+                  {numberWithCommas(
+                    coin?.market_data.market_cap[
+                      currency.toLowerCase()
+                    ].toString()
+                  )}
                 </Typography>
               </span>
             </StyledHeading>
