@@ -5,6 +5,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { styled } from "@mui/system";
 import { CircularProgress } from "@mui/material";
 import { Line } from "react-chartjs-2";
+import {
+  CategoryScale,
+  Chart,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from "chart.js";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -54,6 +61,10 @@ const CoinInfo = ({ coin }) => {
       paddingTop: 0,
     },
   }));
+
+  // Chart.js settings
+
+  Chart.register(CategoryScale, LinearScale, PointElement, LineElement);
 
   const labels = historicalPrice?.map((coin) => {
     let date = new Date(coin[0]);
