@@ -11,6 +11,7 @@ import {
   LinearScale,
   PointElement,
   LineElement,
+  Tooltip,
 } from "chart.js";
 
 const CoinInfo = ({ coin }) => {
@@ -64,7 +65,13 @@ const CoinInfo = ({ coin }) => {
 
   // Chart.js settings
 
-  Chart.register(CategoryScale, LinearScale, PointElement, LineElement);
+  Chart.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Tooltip
+  );
 
   const labels = historicalPrice?.map((coin) => {
     let date = new Date(coin[0]);
@@ -95,6 +102,13 @@ const CoinInfo = ({ coin }) => {
     elements: {
       point: {
         radius: 1,
+      },
+    },
+    plugins: {
+      tooltips: {
+        enabled: true,
+        mode: "index",
+        intersect: false,
       },
     },
   };
