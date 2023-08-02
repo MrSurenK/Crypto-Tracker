@@ -5,7 +5,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { styled } from "@mui/system";
 import { CircularProgress } from "@mui/material";
 import { Line } from "react-chartjs-2";
-import { Chart } from "chart.js/auto";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -40,7 +39,7 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
-  const StyleContainer = styled("div")({
+  const StyleContainer = styled("div")(({ theme }) => ({
     width: "75%",
     display: "flex",
     flexDirection: "column",
@@ -48,13 +47,13 @@ const CoinInfo = ({ coin }) => {
     justifyContent: "center",
     marginTop: 25,
     padding: 40,
-    [`@media(max-width:960px)`]: {
+    [theme.breakpoints.down("md")]: {
       width: "100%",
       marginTop: 0,
       padding: 20,
       paddingTop: 0,
     },
-  });
+  }));
 
   const labels = historicalPrice?.map((coin) => {
     let date = new Date(coin[0]);
