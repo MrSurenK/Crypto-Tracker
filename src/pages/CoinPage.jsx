@@ -96,13 +96,30 @@ const CoinPage = () => {
             style={{ marginBottom: 20 }}
           />
           <StyledHeading>
-            <Typography variant="h3">{coin?.name}</Typography>
+            <div>
+              <Typography variant="h3">{coin?.name}</Typography>
+            </div>
           </StyledHeading>
           <StyledDescription>
-            <Typography variant="subtitle1">
-              {coin?.description.en.split(". ")[0]}
-            </Typography>
+            <div>
+              <Typography variant="subtitle1">
+                {coin?.description.en.split(". ")[0]}
+              </Typography>
+            </div>
           </StyledDescription>
+          <StyledMarketData>
+            <span style={{ display: "flex" }}>
+              <StyledHeading>
+                <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
+                  Rank:
+                </Typography>
+                {"\u00A0"} {"\u00A0"}
+                <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
+                  {coin?.market_cap_rank}
+                </Typography>
+              </StyledHeading>
+            </span>
+          </StyledMarketData>
         </StyledSidebar>
       </StyledContainer>
 
