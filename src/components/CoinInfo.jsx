@@ -4,8 +4,8 @@ import { HistoricalChart } from "../config/endpoints";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { styled } from "@mui/system";
 import { CircularProgress } from "@mui/material";
-import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
+import { Chart } from "chart.js/auto";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -56,7 +56,7 @@ const CoinInfo = ({ coin }) => {
     },
   });
 
-  const labels = historicalPrice.map((coin) => {
+  const labels = historicalPrice?.map((coin) => {
     let date = new Date(coin[0]);
     // To display time in am/pm format
     // getHours returns the hour from 0 to 23
@@ -69,16 +69,24 @@ const CoinInfo = ({ coin }) => {
     return days === 1 ? time : date.toLocaleDateString();
   });
 
-  const chartData = {
+  const data = {
     labels: labels,
     datasets: [
       {
         label: `Price (Past ${days} Days ) in ${currency}`,
         // From API data. Select the price in coin array
-        data: historicalPrice.map((coin) => coin[1]),
+        data: historicalPrice?.map((coin) => coin[1]),
         borderColor: "#EEBC1D",
       },
     ],
+  };
+
+  const options = {
+    elements: {
+      point: {
+        radius: 1,
+      },
+    },
   };
 
   return (
@@ -88,7 +96,7 @@ const CoinInfo = ({ coin }) => {
           <CircularProgress sx={{ color: "gold" }} size={250} thickness={1} />
         ) : (
           <>
-            <Chart data={chartData} />
+            <Line data={data} options={options} />
           </>
         )}
       </StyleContainer>
