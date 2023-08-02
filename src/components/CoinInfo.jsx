@@ -13,6 +13,7 @@ import {
 } from "chart.js";
 import { styled, createTheme, ThemeProvider } from "@mui/system";
 import { chartDays } from "../config/data";
+import ChartButton from "./ChartButton";
 
 const CoinInfo = ({ coin }) => {
   // Initialise historical data state
@@ -133,7 +134,13 @@ const CoinInfo = ({ coin }) => {
           }}
         >
           {chartDays.map((day) => (
-            <button>{day.label}</button>
+            <ChartButton
+              key={day.value}
+              onClick={() => setDays(day.value)}
+              selected={day.value === days}
+            >
+              {day.label}
+            </ChartButton>
           ))}
         </div>
       </>
