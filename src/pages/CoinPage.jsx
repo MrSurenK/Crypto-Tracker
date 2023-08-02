@@ -7,7 +7,7 @@ import CoinInfo from "../components/CoinInfo";
 import { Typography } from "@mui/material";
 import { numberWithCommas } from "../Banner/Carousel";
 import LinearProgress from "@mui/material/LinearProgress";
-import Box from "@mui/material/Box";
+import parse from "html-react-parser";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -105,7 +105,7 @@ const CoinPage = () => {
           <StyledDescription>
             <div>
               <Typography variant="subtitle1">
-                {coin?.description.en.split(". ")[0]}
+                {parse(coin?.description.en.split(". ")[0].toString())}
               </Typography>
             </div>
           </StyledDescription>
@@ -128,7 +128,9 @@ const CoinPage = () => {
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
                   ${" "}
                   {numberWithCommas(
-                    coin?.market_data.current_price[currency.toLowerCase()]
+                    coin?.market_data.current_price[
+                      currency.toLowerCase()
+                    ].toFixed(2)
                   )}
                 </Typography>
               </span>
