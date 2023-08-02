@@ -5,7 +5,6 @@ import { SingleCoin } from "../config/endpoints";
 import { styled } from "@mui/system";
 import CoinInfo from "../components/CoinInfo";
 import { Typography } from "@mui/material";
-import parse from "html-react-parser";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -30,7 +29,7 @@ const CoinPage = () => {
   // Styling of components
   const StyledContainer = styled("div")({
     display: "flex",
-    [`media (max-width:960px)`]: {
+    [`@media (max-width:960px)`]: {
       flexDirection: "column",
       alignItems: "center",
     },
@@ -38,7 +37,7 @@ const CoinPage = () => {
 
   const StyledSidebar = styled("div")({
     width: "30%",
-    [`media(max-width:960px)`]: {
+    [`@media(max-width:960px)`]: {
       width: "100%",
     },
 
@@ -84,8 +83,8 @@ const CoinPage = () => {
     },
   });
 
-  const des = coin?.description.en.split(". ")[0];
-  const strDes = des.toString();
+  // const des = coin?.description.en.split(". ")[0];
+  // const strDes = des.toString();
 
   return (
     <>
@@ -101,7 +100,9 @@ const CoinPage = () => {
             <Typography variant="h3">{coin?.name}</Typography>
           </StyledHeading>
           <StyledDescription>
-            <Typography variant="subtitle1">{parse(strDes)}</Typography>
+            <Typography variant="subtitle1">
+              {coin?.description.en.split(". ")[0]}
+            </Typography>
           </StyledDescription>
         </StyledSidebar>
       </StyledContainer>
