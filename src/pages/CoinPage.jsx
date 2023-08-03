@@ -155,11 +155,9 @@ const CoinPage = () => {
                 &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
                   ${" "}
-                  {numberWithCommas(
-                    coin?.market_data.current_price[
-                      currency.toLowerCase()
-                    ].toFixed(5)
-                  )}
+                  {coin?.market_data.current_price[
+                    currency.toLowerCase()
+                  ].toFixed(2)}
                 </Typography>
               </span>
               <span style={{ display: "flex" }}>

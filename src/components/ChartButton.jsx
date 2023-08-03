@@ -17,15 +17,12 @@ const ChartButton = ({ children, selected, onClick }) => {
       backgroundColor: "gold",
       color: "black",
     },
-    width: "22%",
+    width: "10%",
     margin: 5,
+    textAlign: "center",
   });
 
-  return (
-    <StyledChartButton onClick={onClick} className={selected}>
-      {children}
-    </StyledChartButton>
-  );
+  return <StyledChartButton onClick={onClick}>{children}</StyledChartButton>;
 };
 
 export default ChartButton;
