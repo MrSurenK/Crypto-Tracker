@@ -5,10 +5,10 @@ import { Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CurrencyState } from "../CurrencyContext";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import WatchListModal from "./WatchListModal";
 
-const Header = () => {
+const Header = (props) => {
   // This hook is to return to the homepage whenever the crypto Tracker logo is cliked (Refer to onClick at Typography component)
   const navigate = useNavigate();
 
@@ -17,6 +17,9 @@ const Header = () => {
 
   // Create state for Watchlist
   const [watchList, addWatchList] = useState([]);
+
+  // Set modal states
+  const [open, setOpen] = useState(false);
 
   // Defined custom dark theme for the NavBar
   const darkMode = createTheme({
@@ -47,12 +50,7 @@ const Header = () => {
               CRYPTO TRACKER
             </Typography>
             <Stack spacing={2} direction="row">
-              <Button
-                variant="contained"
-                sx={{ bgcolor: "orange", color: "black" }}
-              >
-                Watchlist
-              </Button>
+              <WatchListModal setState={setOpen} open={open}></WatchListModal>
               <Select
                 variant="outlined"
                 style={{ width: 100, height: 40, marginRight: 15 }}
