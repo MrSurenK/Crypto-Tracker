@@ -90,7 +90,7 @@ const Carousel = () => {
     },
   };
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="lg">
       <AliceCarousel
         infinite
         autoPlayInterval={1000}
