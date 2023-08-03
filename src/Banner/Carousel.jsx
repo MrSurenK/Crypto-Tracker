@@ -90,15 +90,7 @@ const Carousel = () => {
     },
   };
   return (
-    <Container
-    // sx={{
-    //   width: "100%",
-    //   margin: "0 auto",
-    //   height: "50%",
-    //   display: "flex",
-    //   alignItems: "center",
-    // }}
-    >
+    <Container maxWidth="sm">
       <AliceCarousel
         infinite
         autoPlayInterval={1000}

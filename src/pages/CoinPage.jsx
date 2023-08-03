@@ -39,6 +39,7 @@ const CoinPage = () => {
   // Styling of components
   const StyledContainer = styled("div")({
     display: "flex",
+    flexDirection: "row",
     [`@media (max-width:960px)`]: {
       flexDirection: "column",
       alignItems: "center",
@@ -50,7 +51,6 @@ const CoinPage = () => {
     [`@media(max-width:960px)`]: {
       width: "100%",
     },
-
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

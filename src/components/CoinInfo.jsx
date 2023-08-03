@@ -50,7 +50,7 @@ const CoinInfo = ({ coin }) => {
   });
 
   const StyleChartContainer = styled("div")(({ theme }) => ({
-    width: "75%",
+    width: "70%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

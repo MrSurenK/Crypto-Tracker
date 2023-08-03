@@ -2,7 +2,7 @@ import React from "react";
 import { styled } from "@mui/system";
 
 const ChartButton = ({ children, selected, onClick }) => {
-  const StyledChartButton = styled("span")({
+  const StyledChartButton = styled("span")(({ theme }) => ({
     border: "1px solid gold",
     borderRadius: 5,
     padding: 10,
@@ -13,14 +13,18 @@ const ChartButton = ({ children, selected, onClick }) => {
     backgroundColor: selected ? "gold" : "",
     color: selected ? "black" : "",
     fontWeight: selected ? 700 : 500,
-    "&hover": {
+    "&:hover": {
       backgroundColor: "gold",
       color: "black",
     },
-    width: "10%",
+    width: "auto",
     margin: 5,
     textAlign: "center",
-  });
+    [theme.breakpoints.down("sm")]: {
+      // Adjust the width for smaller screens (width will be 100%)
+      width: "100%",
+    },
+  }));
 
   return <StyledChartButton onClick={onClick}>{children}</StyledChartButton>;
 };

@@ -17,7 +17,7 @@ const Banner = () => {
             height: 400,
             display: "flex",
             felxDirection: "column",
-            paddingTop: 25,
+            paddingTop: 15,
             justifyContent: "space-around",
           }}
         >
@@ -35,7 +35,7 @@ const Banner = () => {
               sx={{
                 fontWeight: "bold",
                 fontFamily: "Roboto",
-                mb: 15,
+                mb: 5,
               }}
             >
               CRYPTO TRACKER
