@@ -16,7 +16,7 @@ const Carousel = () => {
   const [trending, setTrending] = useState([]);
 
   // Get state of currency
-  const { currency } = CurrencyState();
+  const { currency, symbol } = CurrencyState();
   //Fetch top 7 coins with default Get Method
   const topCoins = async () => {
     const res = await fetch(TrendingCoins(currency));
@@ -49,7 +49,7 @@ const Carousel = () => {
       >
         <img
           src={coin?.image}
-          alt={coin.name}
+          alt={coin?.name}
           height="80"
           style={{ marginBottom: 10 }}
         ></img>
@@ -64,6 +64,7 @@ const Carousel = () => {
           >
             {/* if profit disaply +, - alr displayed in dataset so just need to add + to positive price changes */}
             {/* Disaply 2dp with a % at the back */}
+            {symbol}
             {profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
         </span>

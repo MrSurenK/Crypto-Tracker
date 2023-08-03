@@ -23,7 +23,7 @@ const Coinstable = () => {
   const [page, setPage] = useState(1);
 
   // Import from context API
-  const { currency } = CurrencyState();
+  const { currency, symbol } = CurrencyState();
 
   const navigate = useNavigate();
 
@@ -137,7 +137,7 @@ const Coinstable = () => {
                                 fontSize: 22,
                               }}
                             >
-                              {row.symbol}
+                              {row.current_price}
                             </span>
                             <span style={{ color: "darkgrey" }}>
                               {row.name}
@@ -146,7 +146,7 @@ const Coinstable = () => {
                         </TableCell>
                         {/* Table data column for the price */}
                         <TableCell align="right">
-                          {row.symbol}
+                          {symbol}
                           {numberWithCommas(row.current_price.toFixed(2))}
                         </TableCell>
                         <TableCell
@@ -160,7 +160,7 @@ const Coinstable = () => {
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
                         <TableCell align="right">
-                          {row.symbol}
+                          {symbol}
                           {numberWithCommas(row.market_cap.toString())}
                         </TableCell>
                       </TableRow>

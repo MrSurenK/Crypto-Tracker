@@ -21,7 +21,7 @@ const CoinPage = () => {
   //Create state for watchlist
   const [watchlist, setWatchlist] = useState([]);
 
-  const { currency } = CurrencyState();
+  const { currency, symbol } = CurrencyState();
 
   const fetchCoin = async () => {
     const response = await fetch(SingleCoin(id));
@@ -170,7 +170,7 @@ const CoinPage = () => {
                 </Typography>
                 &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
-                  {coin?.symbol}
+                  {symbol}
                   {coin?.market_data.current_price[
                     currency.toLowerCase()
                   ].toFixed(2)}
@@ -182,7 +182,7 @@ const CoinPage = () => {
                 </Typography>
                 &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
-                  {coin.symbol}
+                  {symbol}
                   {numberWithCommas(
                     coin?.market_data.market_cap[
                       currency.toLowerCase()
