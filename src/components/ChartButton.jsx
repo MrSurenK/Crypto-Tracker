@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@mui/system";
 
-const ChartButton = ({ children }) => {
+const ChartButton = ({ children, selected, onClick }) => {
   const StyledChartButton = styled("span")({
     border: "1px solid gold",
     borderRadius: 5,
@@ -22,7 +22,7 @@ const ChartButton = ({ children }) => {
   });
 
   return (
-    <StyledChartButton onCLick={onClick} className={selected}>
+    <StyledChartButton onClick={onClick} className={selected}>
       {children}
     </StyledChartButton>
   );
