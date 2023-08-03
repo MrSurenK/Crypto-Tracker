@@ -93,6 +93,17 @@ const CoinPage = () => {
     },
   });
 
+  const ResponsiveButtonContainer = styled("div")({
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    [`@media (max-width:960px)`]: {
+      marginTop: 20,
+      flexDirection: "column",
+      width: "auto",
+    },
+  });
+
   // Chart styling
 
   const darkTheme = createTheme({
@@ -103,22 +114,6 @@ const CoinPage = () => {
       type: "dark",
     },
   });
-
-  const StyleChartContainer = styled("div")(({ theme }) => ({
-    width: "75%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 25,
-    padding: 40,
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      marginTop: 0,
-      padding: 20,
-      paddingTop: 0,
-    },
-  }));
 
   // Button function to send data up to WatchList Modal
   const addToWatchList = () => {
@@ -202,13 +197,15 @@ const CoinPage = () => {
                 marginTop: 25,
               }}
             ></Box> */}
-            <Button
-              onClick={() => addToWatchList()}
-              variant="contained"
-              sx={{ color: "black", bgcolor: "orange" }}
-            >
-              Add to Watchlist
-            </Button>
+            <ResponsiveButtonContainer>
+              <Button
+                onClick={() => addToWatchList()}
+                variant="contained"
+                sx={{ color: "black", bgcolor: "orange" }}
+              >
+                Add to Watchlist
+              </Button>
+            </ResponsiveButtonContainer>
             <MyModal watchlist={watchlist}></MyModal>
           </StyledMarketData>
         </StyledSidebar>
