@@ -77,26 +77,30 @@ const Carousel = () => {
   //Responsive object prop for Alice Carousell
   const responsive = {
     0: {
-      items: 2,
+      items: 1, // Show 1 item on screens with width 0px (smallest screens)
     },
-    1024: {
-      items: 4,
+    600: {
+      items: 2, // Show 2 items on screens with width 600px or more
+    },
+    960: {
+      items: 3, // Show 3 items on screens with width 960px or more
+    },
+    1280: {
+      items: 4, // Show 4 items on screens with width 1280px or more (default)
     },
   };
-
   return (
     <Container
-      sx={{
-        width: "100%",
-        margin: "0 auto",
-        height: "50%",
-        display: "flex",
-        alignItems: "center",
-      }}
+    // sx={{
+    //   width: "100%",
+    //   margin: "0 auto",
+    //   height: "50%",
+    //   display: "flex",
+    //   alignItems: "center",
+    // }}
     >
       <AliceCarousel
-        mouseTracking
-        // infinite
+        infinite
         autoPlayInterval={1000}
         animationDuration={1500}
         disableDotsControls
