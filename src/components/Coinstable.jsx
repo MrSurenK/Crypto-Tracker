@@ -120,7 +120,7 @@ const Coinstable = () => {
                         <TableCell
                           component="th"
                           scope="row"
-                          sx={{ display: "flex", gap: 15 }}
+                          sx={{ display: "flex", gap: 2 }}
                         >
                           <img
                             src={row.image}
