@@ -26,6 +26,7 @@ const WatchListModal = (props) => {
     color: "white",
     p: 4,
     textAlign: "center",
+    fontFamily: "Roboto",
   };
 
   return (
