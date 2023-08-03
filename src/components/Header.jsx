@@ -16,7 +16,7 @@ const Header = () => {
   const { currency, setCurrency } = CurrencyState();
 
   // Create state for Watchlist
-  const { watchList, addWatchList } = useState([]);
+  const [watchList, addWatchList] = useState([]);
 
   // Defined custom dark theme for the NavBar
   const darkMode = createTheme({
