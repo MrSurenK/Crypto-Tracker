@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CurrencyState } from "../CurrencyContext";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
+import MyModal from "./MyModal";
 import Box from "@mui/material/Box";
 
 const Header = () => {
@@ -15,9 +15,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   // Modal states and functions to open
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Modal styling
   const style = {
@@ -68,28 +66,16 @@ const Header = () => {
             </Typography>
             <Stack spacing={2} direction="row">
               <Button
-                onClick={handleOpen}
+                onClick={() => setShowModal(true)}
                 variant="contained"
                 sx={{ color: "black", bgcolor: "orange" }}
               >
                 Watchlist
               </Button>
-              <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Box sx={style}>
-                  <Typography
-                    id="modal-modal-title"
-                    variant="h6"
-                    component="h2"
-                  >
-                    My Watchlist
-                  </Typography>
-                </Box>
-              </Modal>
+              <MyModal open={showModal} onClose={() => setShowModal(false)}>
+                My Watchlist
+              </MyModal>
+
               <Select
                 variant="outlined"
                 style={{ width: 100, height: 40, marginRight: 15 }}
