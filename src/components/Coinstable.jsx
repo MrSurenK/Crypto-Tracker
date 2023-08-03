@@ -72,7 +72,7 @@ const Coinstable = () => {
           label="Search Crypto Coins..."
           variant="outlined"
           sx={{ mb: 5, width: "100%" }}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
         ></TextField>
         <TableContainer>
           {loading ? (
