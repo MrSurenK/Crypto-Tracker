@@ -29,7 +29,7 @@ const CoinInfo = ({ coin }) => {
   const fetchHistoricalPrices = async () => {
     const res = await fetch(HistoricalChart(coin.id, days, currency));
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setHistoricalPrice(data.prices);
   };
 

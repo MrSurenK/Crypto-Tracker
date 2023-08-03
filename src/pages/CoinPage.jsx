@@ -126,11 +126,12 @@ const CoinPage = () => {
     const itemSymbol = coin?.symbol;
     const itemPrice =
       coin?.market_data.current_price[currency.toLowerCase()].toFixed(2);
-    const itemPriceChange = coin?.price_change_percentage_24h?.toFixed(2);
+    // const itemPriceChange = coin?.price_change_percentage_24h?.toFixed(2);
     setWatchlist((prevWatchlist) => [
       ...prevWatchlist,
-      { itemImage, itemSymbol, itemPrice, itemPriceChange },
+      { itemSymbol, itemPrice },
     ]);
+    console.log(watchlist);
   };
 
   // Coin price might take some time to fetch, so if no coin it needs to load
@@ -208,10 +209,7 @@ const CoinPage = () => {
             >
               Add to Watchlist
             </Button>
-            <MyModal
-              watchlist={watchlist}
-              setWatchlist={setWatchlist}
-            ></MyModal>
+            <MyModal watchlist={watchlist}></MyModal>
           </StyledMarketData>
         </StyledSidebar>
       </StyledContainer>

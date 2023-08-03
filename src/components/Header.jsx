@@ -72,9 +72,10 @@ const Header = () => {
               >
                 Watchlist
               </Button>
-              <MyModal open={showModal} onClose={() => setShowModal(false)}>
-                My Watchlist
-              </MyModal>
+              <MyModal
+                open={showModal}
+                onClose={() => setShowModal(false)}
+              ></MyModal>
 
               <Select
                 variant="outlined"
