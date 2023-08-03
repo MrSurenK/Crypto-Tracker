@@ -209,10 +209,9 @@ const CoinPage = () => {
             <MyModal watchlist={watchlist}></MyModal>
           </StyledMarketData>
         </StyledSidebar>
+        <CoinInfo coin={coin} />
       </StyledContainer>
       {/* coin is being propped over to the coininfo component */}
-
-      <CoinInfo coin={coin} />
     </>
   );
 };
