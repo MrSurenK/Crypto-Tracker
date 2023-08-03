@@ -9,6 +9,8 @@ import { numberWithCommas } from "../Banner/Carousel";
 import LinearProgress from "@mui/material/LinearProgress";
 import parse from "html-react-parser";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -175,6 +177,23 @@ const CoinPage = () => {
                 </Typography>
               </span>
             </StyledHeading>
+            <Box
+              sx={{
+                display: "flex",
+                marginTop: 25,
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  color: "black",
+                  bgcolor: "Orange",
+                  ":hover": { bgcolor: "grey", color: "black" },
+                }}
+              >
+                Add To Watchlist
+              </Button>
+            </Box>
           </StyledMarketData>
         </StyledSidebar>
       </StyledContainer>
