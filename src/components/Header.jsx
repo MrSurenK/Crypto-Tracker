@@ -6,19 +6,37 @@ import { useNavigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CurrencyState } from "../CurrencyContext";
 import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 
-const Header = (props) => {
+const Header = () => {
   // This hook is to return to the homepage whenever the crypto Tracker logo is cliked (Refer to onClick at Typography component)
   const navigate = useNavigate();
 
+  // Modal states and functions to open
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  // Modal styling
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "#536878",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+    color: "White",
+    textAlign: "center",
+    fontFamily: "Roboto",
+  };
+
   // Import currency state from CurrencyContext
   const { currency, setCurrency } = CurrencyState();
-
-  // Create state for Watchlist
-  const [watchList, setWatchList] = useState({});
-
-  // Set modal states
-  const [open, setOpen] = useState(false);
 
   // Defined custom dark theme for the NavBar
   const darkMode = createTheme({
@@ -49,6 +67,29 @@ const Header = (props) => {
               CRYPTO TRACKER
             </Typography>
             <Stack spacing={2} direction="row">
+              <Button
+                onClick={handleOpen}
+                variant="contained"
+                sx={{ color: "black", bgcolor: "orange" }}
+              >
+                Watchlist
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={style}>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    My Watchlist
+                  </Typography>
+                </Box>
+              </Modal>
               <Select
                 variant="outlined"
                 style={{ width: 100, height: 40, marginRight: 15 }}
