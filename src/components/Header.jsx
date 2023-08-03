@@ -49,46 +49,44 @@ const Header = () => {
   return (
     <ThemeProvider theme={darkMode}>
       <AppBar color="transparent" position="static">
-        <Container>
-          <Toolbar>
-            <Typography
-              sx={{
-                flex: 1,
-                color: "white",
-                fontFamily: "Roboto",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-              variant={"h6"}
-              onClick={() => navigate("/")}
+        <Toolbar>
+          <Typography
+            sx={{
+              flex: 1,
+              color: "white",
+              fontFamily: "Roboto",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+            variant={"h6"}
+            onClick={() => navigate("/")}
+          >
+            CRYPTO TRACKER
+          </Typography>
+          <Stack spacing={2} direction="row">
+            <Button
+              onClick={() => setShowModal(true)}
+              variant="contained"
+              sx={{ color: "black", bgcolor: "orange" }}
             >
-              CRYPTO TRACKER
-            </Typography>
-            <Stack spacing={2} direction="row">
-              <Button
-                onClick={() => setShowModal(true)}
-                variant="contained"
-                sx={{ color: "black", bgcolor: "orange" }}
-              >
-                Watchlist
-              </Button>
-              <MyModal
-                open={showModal}
-                onClose={() => setShowModal(false)}
-              ></MyModal>
+              Watchlist
+            </Button>
+            <MyModal
+              open={showModal}
+              onClose={() => setShowModal(false)}
+            ></MyModal>
 
-              <Select
-                variant="outlined"
-                style={{ width: 100, height: 40, marginRight: 15 }}
-                defaultValue="SGD"
-                onChange={(e) => setCurrency(e.target.value)}
-              >
-                <MenuItem value={"SGD"}>SGD</MenuItem>
-                <MenuItem value={"USD"}>USD</MenuItem>
-              </Select>
-            </Stack>
-          </Toolbar>
-        </Container>
+            <Select
+              variant="outlined"
+              style={{ width: 100, height: 40, marginRight: 15 }}
+              defaultValue="SGD"
+              onChange={(e) => setCurrency(e.target.value)}
+            >
+              <MenuItem value={"SGD"}>SGD</MenuItem>
+              <MenuItem value={"USD"}>USD</MenuItem>
+            </Select>
+          </Stack>
+        </Toolbar>
       </AppBar>
     </ThemeProvider>
   );
