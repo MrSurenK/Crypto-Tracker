@@ -146,7 +146,8 @@ const Coinstable = () => {
                         </TableCell>
                         {/* Table data column for the price */}
                         <TableCell align="right">
-                          ${numberWithCommas(row.current_price.toFixed(2))}
+                          {row.symbol}
+                          {numberWithCommas(row.current_price.toFixed(2))}
                         </TableCell>
                         <TableCell
                           align="right"
@@ -159,7 +160,8 @@ const Coinstable = () => {
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
                         <TableCell align="right">
-                          ${numberWithCommas(row.market_cap.toString())}
+                          {row.symbol}
+                          {numberWithCommas(row.market_cap.toString())}
                         </TableCell>
                       </TableRow>
                     );

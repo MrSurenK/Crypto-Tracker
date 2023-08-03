@@ -170,7 +170,7 @@ const CoinPage = () => {
                 </Typography>
                 &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
-                  ${" "}
+                  {coin?.symbol}
                   {coin?.market_data.current_price[
                     currency.toLowerCase()
                   ].toFixed(2)}
@@ -182,7 +182,7 @@ const CoinPage = () => {
                 </Typography>
                 &nbsp; &nbsp;
                 <Typography variant="h5" sx={{ fontFamily: "Roboto" }}>
-                  $
+                  {coin.symbol}
                   {numberWithCommas(
                     coin?.market_data.market_cap[
                       currency.toLowerCase()
