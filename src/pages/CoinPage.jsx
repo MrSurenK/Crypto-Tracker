@@ -11,10 +11,17 @@ import parse from "html-react-parser";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import WatchListModal from "../components/WatchListModal";
 
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
+
+  // Bring in the modal open/close state for watchlist button
+  const [open, setOpen] = useState(false);
+
+  //Create state for watchlist
+  const [add, setAdd] = useState({});
 
   const { currency } = CurrencyState();
 
@@ -115,6 +122,16 @@ const CoinPage = () => {
     },
   }));
 
+  // Button function to send data up to WatchList Modal
+  const addToWatchList = () => {
+    const itemImage = coin?.image.small;
+    const itemName = coin?.name;
+    const itemPrice =
+      coin?.market_data.current_price[currency.toLowerCase()].toFixed(2);
+    const itemPriceChange = coin?.price_change_percentage_24h?.toFixed(2);
+    setAdd({ itemImage, itemName, itemPrice, itemPriceChange });
+  };
+
   // Coin price might take some time to fetch, so if no coin it needs to load
   if (!coin) return <LinearProgress sx={{ bgcolor: "Gold" }}></LinearProgress>;
   return (
@@ -183,16 +200,20 @@ const CoinPage = () => {
                 marginTop: 25,
               }}
             >
-              <Button
+              <WatchListModal
                 variant="contained"
+                onClick={addToWatchList}
+                addState={add}
                 sx={{
                   color: "black",
                   bgcolor: "Orange",
                   ":hover": { bgcolor: "grey", color: "black" },
                 }}
+                setState={setOpen}
+                open={open}
               >
                 Add To Watchlist
-              </Button>
+              </WatchListModal>
             </Box>
           </StyledMarketData>
         </StyledSidebar>

@@ -16,7 +16,7 @@ const Header = (props) => {
   const { currency, setCurrency } = CurrencyState();
 
   // Create state for Watchlist
-  const [watchList, addWatchList] = useState([]);
+  const [watchList, setWatchList] = useState({});
 
   // Set modal states
   const [open, setOpen] = useState(false);
@@ -50,7 +50,9 @@ const Header = (props) => {
               CRYPTO TRACKER
             </Typography>
             <Stack spacing={2} direction="row">
-              <WatchListModal setState={setOpen} open={open}></WatchListModal>
+              <WatchListModal setState={setOpen} open={open}>
+                Watchlist
+              </WatchListModal>
               <Select
                 variant="outlined"
                 style={{ width: 100, height: 40, marginRight: 15 }}
