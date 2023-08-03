@@ -19,7 +19,7 @@ const CoinPage = () => {
   const [coin, setCoin] = useState();
 
   //Create state for watchlist
-  const [watchlist, setWatchlist] = useState({});
+  const [watchlist, setWatchlist] = useState([]);
 
   const { currency } = CurrencyState();
 
@@ -123,11 +123,14 @@ const CoinPage = () => {
   // Button function to send data up to WatchList Modal
   const addToWatchList = () => {
     const itemImage = coin?.image.small;
-    const itemName = coin?.name;
+    const itemSymbol = coin?.symbol;
     const itemPrice =
       coin?.market_data.current_price[currency.toLowerCase()].toFixed(2);
     const itemPriceChange = coin?.price_change_percentage_24h?.toFixed(2);
-    setWatchlist({ ...itemImage, itemName, itemPrice, itemPriceChange });
+    setWatchlist((prevWatchlist) => [
+      ...prevWatchlist,
+      { itemImage, itemSymbol, itemPrice, itemPriceChange },
+    ]);
   };
 
   // Coin price might take some time to fetch, so if no coin it needs to load
