@@ -11,7 +11,6 @@ import parse from "html-react-parser";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import WatchListModal from "../components/WatchListModal";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -199,22 +198,7 @@ const CoinPage = () => {
                 display: "flex",
                 marginTop: 25,
               }}
-            >
-              <WatchListModal
-                variant="contained"
-                onClick={addToWatchList}
-                addState={add}
-                sx={{
-                  color: "black",
-                  bgcolor: "Orange",
-                  ":hover": { bgcolor: "grey", color: "black" },
-                }}
-                setState={setOpen}
-                open={open}
-              >
-                Add To Watchlist
-              </WatchListModal>
-            </Box>
+            ></Box>
           </StyledMarketData>
         </StyledSidebar>
       </StyledContainer>

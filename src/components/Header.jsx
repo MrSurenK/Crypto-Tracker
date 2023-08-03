@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CurrencyState } from "../CurrencyContext";
 import Stack from "@mui/material/Stack";
-import WatchListModal from "./WatchListModal";
 
 const Header = (props) => {
   // This hook is to return to the homepage whenever the crypto Tracker logo is cliked (Refer to onClick at Typography component)
@@ -50,9 +49,6 @@ const Header = (props) => {
               CRYPTO TRACKER
             </Typography>
             <Stack spacing={2} direction="row">
-              <WatchListModal setState={setOpen} open={open}>
-                Watchlist
-              </WatchListModal>
               <Select
                 variant="outlined"
                 style={{ width: 100, height: 40, marginRight: 15 }}
