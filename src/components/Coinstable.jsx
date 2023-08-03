@@ -65,13 +65,13 @@ const Coinstable = () => {
   return (
     <ThemeProvider theme={darkMode}>
       <Container sx={{ textAlign: "center" }}>
-        <Typography variant="h4" sx={{ margin: 18, fontFamily: "Roboto" }}>
+        <Typography variant="h4" sx={{ margin: 10, fontFamily: "Roboto" }}>
           Crypto Coins by Market Cap
         </Typography>
         <TextField
           label="Search Crypto Coins..."
           variant="outlined"
-          sx={{ mb: 20, width: "100%" }}
+          sx={{ mb: 5, width: "100%" }}
           onChange={(e) => setSearch(e.target.value)}
         ></TextField>
         <TableContainer>

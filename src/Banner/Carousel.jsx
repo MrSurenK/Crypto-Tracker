@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Container } from "@mui/material";
 import { CurrencyState } from "../CurrencyContext";
 import { TrendingCoins } from "../config/endpoints";
 import AliceCarousel from "react-alice-carousel";
@@ -85,9 +85,9 @@ const Carousel = () => {
   };
 
   return (
-    <Box
+    <Container
       sx={{
-        width: "80%",
+        width: "100%",
         margin: "0 auto",
         height: "50%",
         display: "flex",
@@ -105,7 +105,7 @@ const Carousel = () => {
         autoPlay
         items={items}
       />
-    </Box>
+    </Container>
   );
 };
 
