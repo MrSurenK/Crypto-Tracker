@@ -124,25 +124,26 @@ const CoinInfo = ({ coin }) => {
           ) : (
             <Line data={data} options={options} />
           )}
+
+          <div
+            style={{
+              display: "flex",
+              marginTop: 20,
+              justifyContent: "space-around",
+              width: "100%",
+            }}
+          >
+            {chartDays.map((day) => (
+              <ChartButton
+                key={day.value}
+                onClick={() => setDays(day.value)}
+                selected={day.value === days}
+              >
+                {day.label}
+              </ChartButton>
+            ))}
+          </div>
         </StyleChartContainer>
-        <div
-          style={{
-            display: "flex",
-            marginTop: 20,
-            justifyContent: "space-around",
-            width: "100%",
-          }}
-        >
-          {chartDays.map((day) => (
-            <ChartButton
-              key={day.value}
-              onClick={() => setDays(day.value)}
-              selected={day.value === days}
-            >
-              {day.label}
-            </ChartButton>
-          ))}
-        </div>
       </>
     </ThemeProvider>
   );
