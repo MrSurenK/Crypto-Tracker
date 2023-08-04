@@ -64,12 +64,11 @@ const Carousel = () => {
           >
             {/* if profit disaply +, - alr displayed in dataset so just need to add + to positive price changes */}
             {/* Disaply 2dp with a % at the back */}
-            {symbol}
             {profit && "+"} {coin?.price_change_percentage_24h?.toFixed(2)}%
           </span>
         </span>
         <span style={{ fontSize: 22, fontWeight: 500 }}>
-          {coin?.symbol}
+          {symbol}
           {numberWithCommas(coin?.current_price.toFixed(2))}
         </span>
       </Link>
