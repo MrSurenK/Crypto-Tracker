@@ -11,6 +11,7 @@ Keep up to date with the crypto market with this Crypto Tracker webpage.Look up 
 > Technlogies Used
 
     - React
+    - React Router Dom
     - Material UI
     - Chart.js
     - Alice-Carousel
