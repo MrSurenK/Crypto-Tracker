@@ -137,7 +137,7 @@ const Coinstable = () => {
                                 fontSize: 22,
                               }}
                             >
-                              {row.current_price}
+                              {row.symbol}
                             </span>
                             <span style={{ color: "darkgrey" }}>
                               {row.name}
