@@ -66,7 +66,7 @@ const Coinstable = () => {
     <ThemeProvider theme={darkMode}>
       <Container sx={{ textAlign: "center" }}>
         <Typography variant="h4" sx={{ margin: 10, fontFamily: "Roboto" }}>
-          Crypto Coins by Market Cap
+          Crypto Coins By Market Cap
         </Typography>
         <TextField
           label="Search Crypto Coins..."
