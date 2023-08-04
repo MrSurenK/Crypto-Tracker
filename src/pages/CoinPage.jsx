@@ -201,7 +201,12 @@ const CoinPage = () => {
               <Button
                 onClick={() => addToWatchList()}
                 variant="contained"
-                sx={{ color: "black", bgcolor: "orange" }}
+                sx={{
+                  color: "black",
+                  bgcolor: "orange",
+                  width: "100%",
+                  height: 40,
+                }}
               >
                 Add to Watchlist
               </Button>

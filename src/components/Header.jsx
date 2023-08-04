@@ -74,6 +74,7 @@ const Header = () => {
             <MyModal
               open={showModal}
               onClose={() => setShowModal(false)}
+              watchlist={[]}
             ></MyModal>
 
             <Select
