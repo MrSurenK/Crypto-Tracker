@@ -2,7 +2,7 @@
 
 > Description
 
-    Keep up to date with the crypto market with this Crypto Tracker webpage.Look up your favourite Crypto coins on the market right now and get detailed information such as current price, price changes in the last 24hrs, charts with varying time period and in SGD, USD and EUR. Don't miss out on the hot crypto coins in the market now with the carousel of the top 7 coins on the market in our homepage. Invest now!
+Keep up to date with the crypto market with this Crypto Tracker webpage.Look up your favourite Crypto coins on the market right now and get detailed information such as current price, price changes in the last 24hrs, charts with varying time period and in SGD, USD and EUR. Don't miss out on the hot crypto coins in the market now with the carousel of the top 7 coins on the market in our homepage. Invest now!
 
 > Screenshots
 
