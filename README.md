@@ -6,13 +6,13 @@ Keep up to date with the crypto market with this Crypto Tracker webpage.Look up 
 
 > Screenshots
 
-![homepage](/crypto-tracker/Screenshots/homepage.png)
+![homepage](Screenshots/homepage.png)
 
-![table](/crypto-tracker/Screenshots/cointable.png)
+![table](Screenshots/cointable.png)
 
-![carousell](/crypto-tracker/Screenshots/carouselltopcoins.png)
+![carousell](Screenshots/carouselltopcoins.png)
 
-![coinpage](/crypto-tracker/Screenshots/coinchartanddetails.png)
+![coinpage](Screenshots/coinchartanddetails.png)
 
 > Technlogies Used
 
